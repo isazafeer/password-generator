@@ -12,18 +12,59 @@ function writePassword() {
 
 function generatePassword () {
   
+  //Initialising variables
+  var password;
+  var lengthLoopRunning = true;
+
   var lowercase = "abcdefghijklmnopqrstuvwxyz"
-  var ippercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var numbers = "0123456789"
+  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var number = "0123456789"
   var special = "!@#$%&*?"
 
   var lowercasePref = confirm("Would you like lowercase characters?");
-  var lowercasePref = confirm("Would you like uppercase characters?");
-  var lowercasePref = confirm("Would you like numerical characters?");
+  var uppercasePref = confirm("Would you like uppercase characters?");
+  var numberPref = confirm("Would you like numerical characters?");
   var specialPref = confirm("Would you like special characters?");
 
-  var passwordLength = prompt("How many characters should your password be?");
+  alert ("You must select at least one character type for your password");
+  //while??//
+
+  while (lengthLoopRunning) {
+    var passwordLength = Number(prompt("How many characters should your password be?"));
+    if (Number.isInteger(passwordLength)) {
+      if (passwordLength >= 8 && passwordLength <= 42) {
+        lengthLoopRunning = false;
+      } else {
+        alert("length incorrect!!")
+      }
+    } else {
+      alert("enter a number!!")
+    }
+  }
+
+  //check to make sure password length is a number//
+  //validate password length//
+
+  var passwordCharacters = "";
+
+  if (lowercasePref) {
+    passwordCharacters += lowercase;
+  }
+
+  if (uppercasePref) {
+    passwordCharacters += uppercase;
+  }
   
+  if (numberPref) {
+    passwordCharacters += number;
+  }
+
+  if (specialPref) {
+    passwordCharacters += special;
+  }
+
+
+  return password;
 }
 
 
