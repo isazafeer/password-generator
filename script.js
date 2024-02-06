@@ -14,18 +14,29 @@ function generatePassword () {
   
   //Initialising variables
   var lengthLoopRunning = true;
-
+  var characterLoopRunning = true;
   var lowercase = "abcdefghijklmnopqrstuvwxyz"
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   var number = "0123456789"
   var special = "!@#$%&*?"
 
-  var lowercasePref = confirm("Would you like lowercase characters?");
-  var uppercasePref = confirm("Would you like uppercase characters?");
-  var numberPref = confirm("Would you like numerical characters?");
-  var specialPref = confirm("Would you like special characters?");
+  while (characterLoopRunning) {
+    var checkIfTrue = false;
 
-  alert ("You must select at least one character type for your password");
+    var lowercasePref = confirm("Would you like lowercase characters?");
+    var uppercasePref = confirm("Would you like uppercase characters?");
+    var numberPref = confirm("Would you like numerical characters?");
+    var specialPref = confirm("Would you like special characters?");
+
+    if (lowercasePref) {checkIfTrue = true;}
+    if (uppercasePref) {checkIfTrue = true;}
+    if (numberPref) {checkIfTrue = true;}
+    if (specialPref) {checkIfTrue = true;}
+
+    if (checkIfTrue) {characterLoopRunning = false;} else {
+      alert ("You must select at least one character type for your password");
+    }
+  }
 
   while (lengthLoopRunning) {
     var passwordLength = Number(prompt("How many characters should your password be? You must choose between 8 and 128 characters."));
