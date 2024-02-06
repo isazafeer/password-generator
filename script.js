@@ -13,7 +13,6 @@ function writePassword() {
 function generatePassword () {
   
   //Initialising variables
-  var password;
   var lengthLoopRunning = true;
 
   var lowercase = "abcdefghijklmnopqrstuvwxyz"
@@ -27,23 +26,24 @@ function generatePassword () {
   var specialPref = confirm("Would you like special characters?");
 
   alert ("You must select at least one character type for your password");
-  //while??//
 
   while (lengthLoopRunning) {
-    var passwordLength = Number(prompt("How many characters should your password be?"));
+    var passwordLength = Number(prompt("How many characters should your password be? You must choose between 8 and 128 characters."));
     if (Number.isInteger(passwordLength)) {
-      if (passwordLength >= 8 && passwordLength <= 42) {
+      if (passwordLength >= 8 && passwordLength <= 128) {
         lengthLoopRunning = false;
       } else {
-        alert("length incorrect!!")
+        alert("You did not meet the requirements. You must choose between 8 and 128 characters!")
       }
     } else {
-      alert("enter a number!!")
+      alert("You did not meet the requirements. You must enter a number!")
     }
   }
 
-  //check to make sure password length is a number//
-  //validate password length//
+//check to make sure password length is a number// 
+//validate password length//
+
+//creating string of characters that are selected//
 
   var passwordCharacters = "";
 
@@ -62,11 +62,16 @@ function generatePassword () {
   if (specialPref) {
     passwordCharacters += special;
   }
+//creating password variable//
 
+  var password = "";
+
+  for (let i = 0; i < passwordLength; i++) {
+    password += passwordCharacters.charAt(Math.floor(Math.random() * passwordCharacters.length));
+  }
 
   return password;
 }
-
 
 
 // Add event listener to generate button
